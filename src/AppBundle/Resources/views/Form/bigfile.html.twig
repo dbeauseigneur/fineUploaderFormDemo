@@ -1,0 +1,53 @@
+{%- block bigfile_widget -%}
+    <div id="bf2_{{ id }}"> Pb de script</div>
+    {% set file = form.vars.data %} {{ data }}
+    {% if value is not empty %}value="{{ value }}" {% endif %}
+    {#<a href="{{ file ? resource_path(file) }}" target="_blank" class="btn btn-default fileupload-file"
+       {% if not file %}style="display: none"{% endif %}>
+        {% if not form.vars.disabled %}
+            <button class="close" type="button">×</button>
+        {% endif %}
+        <span class="fileupload-filename">{{ file ? file.originalFileName }}</span>#}
+
+    <script>
+
+        $("#bf2_{{ id }}").fineUploader({
+            template: 'qq-template-gallery',
+            core: {
+                maxConnections: 20
+            },
+            {% if (max_file != 1) %}
+            extraButtons: {
+                folders: true
+            },
+            {% endif %}
+            request: {
+                endpoint: "{{ oneup_uploader_endpoint('gallery') }}",
+                params: {
+                    id: "{{ subject_id }}",
+                    field: "{{ name }}",
+                    gen: "{{ id }}"
+                }
+            },
+            failedUploadTextDisplay: {
+                mode: "custom",
+                responseProperty: "custom"
+            },
+            dragAndDrop: {
+                reportDirectoryPaths: true
+            },
+            chunking: {
+                enabled: true,
+                partSize: 1000000
+            },
+            validation: {
+                itemLimit: {{ max_file }},
+                allowEmpty: true,
+                stopOnFirstInvalidFile: false,
+                sizeLimit: 0,
+                minSizeLimit: 0
+            }
+        });
+    </script>
+{%- endblock -%}
+

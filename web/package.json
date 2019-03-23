@@ -1,0 +1,12 @@
+{
+  "name": "fine-upload-file",
+  "version": "0.9.0",
+  "description": "help integration for fineuploader",
+  "main": "app.php",
+  "repository": "https://github.com/dbeauseigneur/fineUploaderFormDemo.git",
+  "author": "damien <dbeauseigneur@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fine-uploader": "^5.16.2"
+  }
+}

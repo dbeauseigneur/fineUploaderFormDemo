@@ -3,8 +3,6 @@
 /app/cache/*
 /app/config/parameters.yml
 /app/logs/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
 /app/phpunit.xml
 /build/
 /vendor/
@@ -13,4 +11,9 @@
 /web/bower_components/
 
 
+
+web/node_modules/
+.idea/
+node_modules/
+Supprimerait src/AppBundle/Twig/
 
