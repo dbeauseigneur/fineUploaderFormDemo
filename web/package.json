@@ -7,6 +7,6 @@
   "author": "damien <dbeauseigneur@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "fine-uploader": "^5.16.2"
+    "fine-uploader": ">=5.16.2"
   }
 }

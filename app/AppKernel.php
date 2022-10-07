@@ -1,28 +1,30 @@
 <?php
 
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
 class AppKernel extends Kernel
 {
     public function registerBundles():iterable
     {
-        $bundles = array(
-            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new AppBundle\AppBundle(),
-        );
+		return array(
+			new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+			new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+			new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+			new AppBundle\AppBundle(),
+		);
 
-        if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
+		/*if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
 			//
-        }
+		}*/
 
-        return $bundles;
-    }
+	}
 
-    public function registerContainerConfiguration(LoaderInterface $loader)
-    {
-        $loader->load($this->ge getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
-    }
+	/**
+	 * @throws Exception
+	 */
+	public function registerContainerConfiguration(LoaderInterface $loader)
+	{
+		$loader->load($this->getProjectDir() . '/config/config_' . $this->getEnvironment() . '.yml');
+	}
 }
